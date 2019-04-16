@@ -64,12 +64,6 @@ transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
 ### output:
 `Number of Transitions
 -----------------------------------------------
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
-
 | simple_to   | bite | safe | unsafe | wipe |
 | ----------- |:----:|:----:|:------:| ----:|
 | simple_from |      |      |        |      |
@@ -82,12 +76,13 @@ transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
 time_spent = pd.crosstab(values=df.time_spent,aggfunc=np.sum,index=df.simple_from, columns=df.simple_to)
 
 ### output:
-`Time Spent
+Time Spent
 -----------------------------------------------
-simple_to         bite       safe        unsafe          wipe
-simple_from                                                  
-safe               NaN        NaN  1.955786e+10  3.472525e+10
-unsafe       4120329.0  1058672.0           NaN  4.609800e+04`
+| simple_to   | bite | safe | unsafe | wipe |
+| ----------- |:----:|:----:|:------:| ----:|
+| simple_from |      |      |        |      |
+|safe|               NaN|        NaN|  1.955786e+10|  3.472525e+10|
+|unsafe|       4120329.0|  1058672.0|           NaN|  4.609800e+04|
 
 ## Step 4
 
