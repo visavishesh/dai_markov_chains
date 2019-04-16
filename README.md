@@ -51,7 +51,7 @@ Lastly, it divides the # of transitions for each state pair by the total time sp
     wipe/Shut = debt-tranche that has been voluntarily closed by owner
     unsafe = CDP is below 150% collateralization ratio
     safe = CDP is not below 150% collateralization ratio
-    open = CDP is safe and is still open, these are present to properly acount for CDPs still open at the end of the obersvation period. They contribute to the time spent in 'safe' state, but not to the number of transitions from the 'safe' state.
+    open = CDP is safe and is still open, these are present to properly acount for CDPs still open at the end of the observation period (UNIX 1549495867). They contribute to the time spent in 'safe' state, but not to the number of transitions from the 'safe' state.
 
 # The Code and the Output
 
