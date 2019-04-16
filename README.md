@@ -113,7 +113,7 @@ Total Draw Seconds in 'from state'
 
 ## Step 6
 
-### Adds a time-spent in 'from' state column to the 1st transition count matrix
+### Adds a column for time-spent in 'from' state to the 1st transition count matrix
 merged_transition_count = pd.concat([transition_count,total_draw_seconds_spent],axis=1)
 
 ### output:
