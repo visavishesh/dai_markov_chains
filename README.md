@@ -14,6 +14,7 @@ Install Python3:
   If you do not have homebrew, first install homebrew:
 
   `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+  
   If you do have homebrew:
 
   `brew install python3`
