@@ -55,13 +55,13 @@ df.head()
 ### Produces a matrix of the number of transitions between each 'from' and 'to' state
 transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
 
-### Produces a matrix of the time spent in each state (still broken out by the transition 'from')
+### Produces a matrix of the time spent in each state (still broken-out by the transition 'from'/'to)
 time_spent = pd.crosstab(values=df.time_spent,aggfunc=np.sum,index=df.simple_from, columns=df.simple_to)
 
-### Multiplies the first two matrices, to get draw-seconds spent in each state (still broken out by the transition 'from')
+### Multiplies the first two matrices, to get draw-seconds spent in each state (still broken-out by 'from'/'to')
 draw_seconds = transition_count * time_spent
 
-### Collapses the break out for transition 'from', to just draw-seconds in 'safe' vs. 'unsafe'
+### Collapses the break-out to just draw-seconds in 'safe' vs. 'unsafe' (ie by 'from' state)
 total_draw_seconds_spent = draw_seconds.sum(axis=1)
 
 ### Adds a time-spent in 'from' state column to the 1st transition count matrix
