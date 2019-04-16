@@ -62,15 +62,12 @@ df.head()
 transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
 
 ### output:
-Number of Transitions
+`Number of Transitions
 -----------------------------------------------
 simple_to    bite  safe  unsafe   wipe
-
 simple_from                           
-
 safe            0     0    4617  17702
-
-unsafe       3922   346       0    344
+unsafe       3922   346       0    344`
 
 ## Step 3
 
@@ -78,15 +75,12 @@ unsafe       3922   346       0    344
 time_spent = pd.crosstab(values=df.time_spent,aggfunc=np.sum,index=df.simple_from, columns=df.simple_to)
 
 ### output:
-Time Spent
+`Time Spent
 -----------------------------------------------
 simple_to         bite       safe        unsafe          wipe
-
 simple_from                                                  
-
 safe               NaN        NaN  1.955786e+10  3.472525e+10
-
-unsafe       4120329.0  1058672.0           NaN  4.609800e+04
+unsafe       4120329.0  1058672.0           NaN  4.609800e+04`
 
 ## Step 4
 
@@ -94,16 +88,12 @@ unsafe       4120329.0  1058672.0           NaN  4.609800e+04
 draw_seconds = transition_count * time_spent
 
 ###output: 
-Draw Seconds (Number of Draws x Time Spent)
+`Draw Seconds (Number of Draws x Time Spent)
 -----------------------------------------------
-
 simple_to            bite         safe        unsafe          wipe
-
 simple_from                                                       
-
 safe                  NaN          NaN  9.029862e+13  6.147064e+14
-
-unsafe       1.615993e+10  366300512.0           NaN  1.585771e+07
+unsafe       1.615993e+10  366300512.0           NaN  1.585771e+07`
 
 ## Step 5
 
@@ -111,13 +101,11 @@ unsafe       1.615993e+10  366300512.0           NaN  1.585771e+07
 total_draw_seconds_spent = draw_seconds.sum(axis=1)
 
 ### output:
-Total Draw Seconds in 'from state'
+`Total Draw Seconds in 'from state'
 -----------------------------------------------
 simple_from
-
 safe      7.050050e+14
-
-unsafe    1.654209e+10
+unsafe    1.654209e+10`
 
 ## Step 6
 
@@ -125,14 +113,12 @@ unsafe    1.654209e+10
 merged_transition_count = pd.concat([transition_count,total_draw_seconds_spent],axis=1)
 
 ### output:
-Concatenated Matrix
+`Concatenated Matrix
 -----------------------------------------------
              bite  safe  unsafe   wipe  total_draw_seconds_spent
 simple_from                                                     
-
 safe            0     0    4617  17702              7.050050e+14
-
-unsafe       3922   346       0    344              1.654209e+10
+unsafe       3922   346       0    344              1.654209e+10`
 
 ## Step 7 (not really a step)
 
@@ -147,11 +133,9 @@ merged_transition_count.columns = ["bite","safe","unsafe","wipe","total_draw_sec
 equilibrium = merged_transition_count[["bite","safe","unsafe","wipe"]].div(merged_transition_count["total_draw_seconds_spent"],axis=0)
 
 ### output:
-Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from state')
+`Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from state')
 -----------------------------------------------
                      bite          safe        unsafe          wipe
 simple_from                                                        
-
 safe         0.000000e+00  0.000000e+00  6.548890e-12  2.510904e-11
-
-unsafe       2.370922e-07  2.091634e-08  0.000000e+00  2.079544e-08
+unsafe       2.370922e-07  2.091634e-08  0.000000e+00  2.079544e-08`
