@@ -1,3 +1,4 @@
+#imports dependencies
 import csv
 import pandas as pd
 import numpy as np
@@ -5,9 +6,6 @@ import numpy as np
 #reads the csv file into a dataframe
 df = pd.read_csv("intermediate_markov_output.csv")
 df.head()
-
-#parses the simple_transition field into the states being transitioned from and transitioned to
-df["simple_transition"] = df["simple_from"]+"_to_"+df["simple_to"]
 
 #cross-tabulates the dataframe, crossing the simple_from and simple_to columns
 #this produces a matrix of the number of transitions between each 'from' and 'to' state
