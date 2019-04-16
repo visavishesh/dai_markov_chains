@@ -128,7 +128,7 @@ Concatenated Matrix
 ## Step 7 (not really a step)
 
 ### Beautification (renaming columns)
-merged_transition_count.columns = ["bite","safe","unsafe","wipe","total_draw_seconds_spent"]
+merged_transition_count.columns = ["simple_to","bite","safe","unsafe","wipe","total_draw_seconds_spent"]
 
 ### output: none
 
