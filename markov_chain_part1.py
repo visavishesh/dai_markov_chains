@@ -3,6 +3,8 @@ import json
 
 output = []
 
+last_time = 1549495867
+
 with open("debt_lives_processed.csv","r") as csvfile:
 	reader = csv.DictReader(csvfile)		
 	for row in reader:
@@ -12,13 +14,17 @@ with open("debt_lives_processed.csv","r") as csvfile:
 		transition_times = sorted([k for k in reader.fieldnames if "transition" in k and "time" in k])
 		transition_array = [(-1,"born",born,"safe")]
 
-		weight = float(row["start_val"])
+		weight = float(row["start_val"])		
 
 		for i in range(len(transitions)):
 			transition = row[transitions[i]]
 			transition_time = row[transition_times[i]]
 			if transition_time!='': 
 				transition_array+=[(int(transitions[i].replace("transition","")),transition,int(transition_time))]
+
+		if row["transition0"]=='' and row["safe"]=='TRUE': 
+			transition_array+=[(0, 'open', 1549495867, 'safe')]
+			print(transition_array)
 
 		for i in range(1,len(transition_array)):
 			transition_name = transition_array[i-1][1]+"->"+transition_array[i][1]
@@ -29,6 +35,7 @@ with open("debt_lives_processed.csv","r") as csvfile:
 			if transition_name=="born->wipe": simple_transition=("safe","wipe")
 			elif transition_name=="born->shut": simple_transition=("safe","wipe")
 			elif transition_name=="born->bite": simple_transition=("safe","bite")
+			elif transition_name=="born->open": simple_transition=("safe","open")
 			elif transition_name=="born->FALSE": simple_transition=("safe","unsafe")
 			elif transition_name=="TRUE->FALSE": simple_transition=("safe","unsafe")
 			elif transition_name=="TRUE->bite": simple_transition=("safe","bite")
