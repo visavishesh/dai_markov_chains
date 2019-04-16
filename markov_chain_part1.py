@@ -3,7 +3,7 @@ import json
 
 output = []
 
-with open("intermediate_markov_output.csv") as csvfile:
+with open("debt_lives_processed.csv","r") as csvfile:
 	reader = csv.DictReader(csvfile)		
 	for row in reader:
 		cup = int(row["\ufeffcup"])
