@@ -41,7 +41,7 @@ This is the 'simple_transition' field. It also adds the time_spent value, which 
 This output is the 'intermediate_markov_output.csv'.
     
 ## The magic:
-markov_chains_part2.py uses pandas and numpy. 
+markov_chain_part2.py uses pandas and numpy. 
 It first reads and parses the intermediate output file, then cross-tabulates the count of transitions in each from-to state pair. 
 It then sums the time spent in each 'from' state (ie 'safe' and 'unsafe'). 
 Lastly, it divides the # of transitions for each state pair by the total time spent in the 'from' state to produce the final output.
