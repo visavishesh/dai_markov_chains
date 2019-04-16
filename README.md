@@ -48,28 +48,28 @@ Lastly, it divides the # of transitions for each state pair by the total time sp
 
 # The Code
 
-## Reads the File
+### Reads the File
 df = pd.read_csv("intermediate_markov_output.csv")
 df.head()
 df["simple_transition"] = df["simple_from"]+"_to_"+df["simple_to"]
 
-## Produces a matrix of the number of transitions between each 'from' and 'to' state
+### Produces a matrix of the number of transitions between each 'from' and 'to' state
 transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
 
-## Produces a matrix of the time spent in each state (still broken out by the transition 'from')
+### Produces a matrix of the time spent in each state (still broken out by the transition 'from')
 time_spent = pd.crosstab(values=df.time_spent,aggfunc=np.sum,index=df.simple_from, columns=df.simple_to)
 
-## Multiplies the first two matrices, to get draw-seconds spent in each state (still broken out by the transition 'from')
+### Multiplies the first two matrices, to get draw-seconds spent in each state (still broken out by the transition 'from')
 draw_seconds = transition_count * time_spent
 
-## Collapses the break out for transition 'from', to just draw-seconds in 'safe' vs. 'unsafe'
+### Collapses the break out for transition 'from', to just draw-seconds in 'safe' vs. 'unsafe'
 total_draw_seconds_spent = draw_seconds.sum(axis=1)
 
-## Adds a time-spent in 'from' state column to the 1st transition count matrix
+### Adds a time-spent in 'from' state column to the 1st transition count matrix
 merged_transition_count = pd.concat([transition_count,total_draw_seconds_spent],axis=1)
 
-## Beautification (renaming columns)
+### Beautification (renaming columns)
 merged_transition_count.columns = ["bite","safe","unsafe","wipe","total_draw_seconds_spent"]
 
-## Simple division of transition count for each state pair by total draw-seconds spent in 'from' state ('safe' vs 'unsafe') across all draws
+### Simple division of transition count for each state pair by total draw-seconds spent in 'from' state ('safe' vs 'unsafe') across all draws
 equilibrium = merged_transition_count[["bite","safe","unsafe","wipe"]].div(merged_transition_count["total_draw_seconds_spent"],axis=0)
