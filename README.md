@@ -71,6 +71,7 @@ transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
 | zebra stripes | are neat      |    $1 |
 
 | simple_to | bite | safe | unsafe | wipe |
+| simple_from | | | | |
 | --------- |:----:|:----:|:------:| ----:|
 | safe      | 0    | 0    | 4617   | 17702| 
 | unsafe    | 3922 | 346  | 0      | 344  | 
