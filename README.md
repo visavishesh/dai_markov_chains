@@ -90,12 +90,13 @@ Time Spent
 draw_seconds = transition_count * time_spent
 
 ###output: 
-`Draw Seconds (Number of Draws x Time Spent)
+Draw Seconds (Number of Draws x Time Spent)
 -----------------------------------------------
-simple_to            bite         safe        unsafe          wipe
-simple_from                                                       
-safe                  NaN          NaN  9.029862e+13  6.147064e+14
-unsafe       1.615993e+10  366300512.0           NaN  1.585771e+07`
+| simple_to   | bite | safe | unsafe | wipe |
+| ----------- |:----:|:----:|:------:| ----:|
+| simple_from |      |      |        |      |               
+|safe         | NaN | NaN  | 9.029862e+13 | 6.147064e+14|
+|unsafe       |1.615993e+10| 366300512.0 | NaN | 1.585771e+07|
 
 ## Step 5
 
@@ -105,9 +106,10 @@ total_draw_seconds_spent = draw_seconds.sum(axis=1)
 ### output:
 `Total Draw Seconds in 'from state'
 -----------------------------------------------
-simple_from
-safe      7.050050e+14
-unsafe    1.654209e+10`
+|simple_from | draw-time |
+| -- | -- |
+|safe|7.050050e+14|
+|unsafe|1.654209e+10|
 
 ## Step 6
 
@@ -117,10 +119,11 @@ merged_transition_count = pd.concat([transition_count,total_draw_seconds_spent],
 ### output:
 `Concatenated Matrix
 -----------------------------------------------
-             bite  safe  unsafe   wipe  total_draw_seconds_spent
-simple_from                                                     
-safe            0     0    4617  17702              7.050050e+14
-unsafe       3922   346       0    344              1.654209e+10`
+| simple_to   | bite | safe | unsafe | wipe | total_draw_seconds_spent |
+| ----------- |:----:|:----:|:------:|:------:| ----:|
+| simple_from |:----:|:----:|:------:|:------:| ----:|                                                     
+|safe    |        0|     0|    4617|  17702|              7.050050e+14|
+|unsafe   |    3922|   346 |      0 |   344 |             1.654209e+10|
 
 ## Step 7 (not really a step)
 
