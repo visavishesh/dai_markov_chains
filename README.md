@@ -34,7 +34,7 @@ If you receive an error because you do not have pandas or numpy installed, run t
 # Description:
 
 ## Pre-processing:
-markov_chain_part1.py processes the raw data, labeling each transition with a simplified state transition, ie from ['born','shut,'wipe,'bite','safe','unsafe'] to just ['safe','unsafe','bite','wipe']. 
+markov_chain_part1.py processes the raw data, labeling each transition with a simplified state transition, ie from ['born','open','shut,'wipe,'bite','safe','unsafe'] to just ['safe','open','unsafe','bite','wipe']. 
 
 This is the 'simple_transition' field. It also adds the time_spent value, which is a simple subtraction of the timestamp of the state being transitioned to minus the timestamp of the state being transitioned from. 
 
@@ -45,6 +45,13 @@ markov_chain_part2.py uses pandas and numpy.
 It first reads and parses the intermediate output file, then cross-tabulates the count of transitions in each from-to state pair. 
 It then sums the time spent in each 'from' state (ie 'safe' and 'unsafe'). 
 Lastly, it divides the # of transitions for each state pair by the total time spent in the 'from' state to produce the final output.
+
+### A little backfground on states:
+    bite = debt-tranche that has been liquidated
+    wipe/Shut = debt-tranche that has been voluntarily closed by owner
+    unsafe = CDP is below 150% collateralization ratio
+    safe = CDP is not below 150% collateralization ratio
+    open = CDP is safe and is still open, these are present to properly acount for CDPs still open at the end of the obersvation period. They contribute to the time spent in 'safe' state, but not to the number of transitions from the 'safe' state.
 
 # The Code and the Output
 
@@ -64,11 +71,11 @@ transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
 ### output:
 Number of Transitions
 -----------------------------------------------
-| simple_to   | bite | safe | unsafe | wipe |
-| ----------- |:----:|:----:|:------:| ----:|
-| simple_from |      |      |        |      |
-| safe        | 0    | 0    | 4617   | 17702| 
-| unsafe      | 3922 | 346  | 0      | 344  | 
+| simple_to   | bite | open | safe | unsafe | wipe |
+| ----------- |:----:|:----:|:----:|:------:| ----:|
+| simple_from |      |      |      |        |      |
+| safe        | 0    | 4284 | 0    | 4617   | 17702| 
+| unsafe      | 3922 | 0    | 346  | 0      | 344  | 
 
 ## Step 3
 
@@ -78,11 +85,11 @@ time_spent = pd.crosstab(values=df.time_spent,aggfunc=np.sum,index=df.simple_fro
 ### output:
 Time Spent
 -----------------------------------------------
-| simple_to   | bite | safe | unsafe | wipe |
-| ----------- |:----:|:----:|:------:| ----:|
-| simple_from |      |      |        |      |
-|safe|               NaN|        NaN|  1.955786e+10|  3.472525e+10|
-|unsafe|       4120329.0|  1058672.0|           NaN|  4.609800e+04|
+| simple_to   | bite | open | safe | unsafe | wipe |
+| ----------- |:----:|:----:|:----:|:------:| ----:|
+| simple_from |      |      |      |        |      |
+|safe         |NaN   |   1.790264e+10|   NaN|  1.955786e+10|  3.472525e+10|
+|unsafe       |4120329.0|1058672.0|NaN|NaN|  4.609800e+04|
 
 ## Step 4
 
@@ -92,11 +99,11 @@ draw_seconds = transition_count * time_spent
 ### output: 
 Draw Seconds (Number of Draws x Time Spent)
 -----------------------------------------------
-| simple_to   | bite | safe | unsafe | wipe |
-| ----------- |:----:|:----:|:------:| ----:|
-| simple_from |      |      |        |      |               
-|safe         | NaN | NaN  | 9.029862e+13 | 6.147064e+14|
-|unsafe       |1.615993e+10| 366300512.0 | NaN | 1.585771e+07|
+| simple_to   | bite | open | safe | unsafe | wipe |
+| ----------- |:----:|:----:|:----:|:------:| ----:|
+| simple_from |      |      |      |        |      |               
+|safe         | NaN | 7.669491e+13  | NaN  | 9.029862e+13 | 6.147064e+14|
+|unsafe       |1.615993e+10| NaN  | 366300512.0 | NaN | 1.585771e+07|
 
 ## Step 5
 
@@ -108,7 +115,7 @@ Total Draw Seconds in 'from state'
 -----------------------------------------------
 |simple_from | draw-time |
 | -- | -- |
-|safe|7.050050e+14|
+|safe|7.816999e+14|
 |unsafe|1.654209e+10|
 
 ## Step 6
@@ -119,16 +126,16 @@ merged_transition_count = pd.concat([transition_count,total_draw_seconds_spent],
 ### output:
 Concatenated Matrix
 -----------------------------------------------
-| simple_to   | bite | safe | unsafe | wipe | total_draw_seconds_spent |
-| ----------- |:----:|:----:|:------:|:------:| ----:|
-| simple_from ||||||                                                     
-|safe    |        0|     0|    4617|  17702|              7.050050e+14|
-|unsafe   |    3922|   346 |      0 |   344 |             1.654209e+10|
+| simple_to   | bite | open | safe | unsafe | wipe | total_draw_seconds_spent |
+| ----------- |:----:|:----:|:----:|:------:|:------:| ----:|
+| simple_from |      |      |      |        |        |      |                                                     
+|safe    |        0|     4284|     0|    4617|  17702|              7.050050e+14|
+|unsafe   |    3922|     0|   346 |      0 |   344 |             1.654209e+10|
 
 ## Step 7 (not really a step)
 
 ### Beautification (renaming columns)
-merged_transition_count.columns = ["simple_to","bite","safe","unsafe","wipe","total_draw_seconds_spent"]
+merged_transition_count.columns = ["bite","open","safe","unsafe","wipe","total_draw_seconds_spent"]
 
 ### output: none
 
@@ -138,7 +145,7 @@ merged_transition_count.columns = ["simple_to","bite","safe","unsafe","wipe","to
 equilibrium = merged_transition_count[["bite","safe","unsafe","wipe"]].div(merged_transition_count["total_draw_seconds_spent"],axis=0)
 
 ### output:
-Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from state')
+Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from state', excluding 'open')
 -----------------------------------------------
 | simple_to   | bite | safe | unsafe | wipe |
 | ----------- |:----:|:----:|:------:| ----:|
