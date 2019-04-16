@@ -129,7 +129,7 @@ Concatenated Matrix
 | simple_to   | bite | open | safe | unsafe | wipe | total_draw_seconds_spent |
 | ----------- |:----:|:----:|:----:|:------:|:------:| ----:|
 | simple_from |      |      |      |        |        |      |                                                     
-|safe    |        0|     4284|     0|    4617|  17702|              7.050050e+14|
+|safe    |        0|     4284|     0|    4617|  17702|              7.816999e+14|
 |unsafe   |    3922|     0|   346 |      0 |   344 |             1.654209e+10|
 
 ## Step 7 (not really a step)
@@ -150,5 +150,5 @@ Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from s
 | simple_to   | bite | safe | unsafe | wipe |
 | ----------- |:----:|:----:|:------:| ----:|
 | simple_from |      |      |        |      |
-|safe   |      0.000000e+00|  0.000000e+00 | 6.548890e-12 | 2.510904e-11|
-|unsafe|       2.370922e-07 | 2.091634e-08 | 0.000000e+00 | 2.079544e-08|
+|safe   |      0.000000e+00|  0.000000e+00 | 5.906359e-12 | 2.264552e-11|
+|unsafe|       2.370922e-07 |2.091634e-08 | 0.000000e+00 | 2.079544e-08|
