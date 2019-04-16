@@ -24,7 +24,7 @@ print(time_spent)
 print()
 
 #this multiples the two matrices together
-#produces a 3rd matrix of the number of draw-seconds spent in 'safe' vs. 'unsafe', broken out into sections for all of the 'from' states
+#produces a 3rd matrix of the number of draw-seconds spent in 'safe' vs. 'unsafe', broken out into sections for all of the 'from'/'to' states
 draw_seconds = transition_count * time_spent
 print("Draw Seconds (Number of Draws x Time Spent)")
 print("-----------------------------------------------")
