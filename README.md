@@ -51,7 +51,6 @@ Lastly, it divides the # of transitions for each state pair by the total time sp
 ### Reads the File
 df = pd.read_csv("intermediate_markov_output.csv")
 df.head()
-df["simple_transition"] = df["simple_from"]+"_to_"+df["simple_to"]
 
 ### Produces a matrix of the number of transitions between each 'from' and 'to' state
 transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
