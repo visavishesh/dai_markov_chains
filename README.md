@@ -144,4 +144,4 @@ Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from s
 | ----------- |:----:|:----:|:------:| ----:|
 | simple_from |      |      |        |      |
 |safe   |      0.000000e+00|  0.000000e+00 | 6.548890e-12 | 2.510904e-11|
-|unsafe|       2.370922e-07 | 2.091634e-08 | 0.000000e+00 | 2.079544e-08`|
+|unsafe|       2.370922e-07 | 2.091634e-08 | 0.000000e+00 | 2.079544e-08|
