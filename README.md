@@ -34,10 +34,17 @@ If you receive an error because you do not have pandas or numpy installed, run t
 # Description:
 
 ## Pre-processing:
-markov_chain_part1.py processes the raw data, labeling each transition with a simplified state transition, ie from ['born','shut,'wipe,'bite','safe','unsafe'] to just ['safe','unsafe','bite','wipe']. This is the 'simple_transition' field. It also adds the time_spent value, which is a simple subtraction of the timestamp of the state being transitioned to minus the timestamp of the state being transitioned from. This output is the 'intermediate_markov_output.csv'.
+markov_chain_part1.py processes the raw data, labeling each transition with a simplified state transition, ie from ['born','shut,'wipe,'bite','safe','unsafe'] to just ['safe','unsafe','bite','wipe']. 
+
+This is the 'simple_transition' field. It also adds the time_spent value, which is a simple subtraction of the timestamp of the state being transitioned to minus the timestamp of the state being transitioned from. 
+
+This output is the 'intermediate_markov_output.csv'.
     
 ## The magic:
-markov_chains_part2.py uses pandas and numpy. It first reads and parses the intermediate output file, then cross-tabulates the count of transitions in each from-to state pair. It then sums the time spent in each 'from' state (ie 'safe' and 'unsafe'). Then it divides the # of transitions for each state pair by the total time spent in the 'from' state to produce the final output.
+markov_chains_part2.py uses pandas and numpy. 
+It first reads and parses the intermediate output file, then cross-tabulates the count of transitions in each from-to state pair. 
+It then sums the time spent in each 'from' state (ie 'safe' and 'unsafe'). 
+Lastly, it divides the # of transitions for each state pair by the total time spent in the 'from' state to produce the final output.
 
 # The Code
 
