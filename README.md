@@ -62,7 +62,7 @@ df.head()
 transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
 
 ### output:
-`Number of Transitions
+Number of Transitions
 -----------------------------------------------
 | simple_to   | bite | safe | unsafe | wipe |
 | ----------- |:----:|:----:|:------:| ----:|
@@ -121,7 +121,7 @@ merged_transition_count = pd.concat([transition_count,total_draw_seconds_spent],
 -----------------------------------------------
 | simple_to   | bite | safe | unsafe | wipe | total_draw_seconds_spent |
 | ----------- |:----:|:----:|:------:|:------:| ----:|
-| simple_from |:----:|:----:|:------:|:------:| ----:|                                                     
+| simple_from ||||||                                                     
 |safe    |        0|     0|    4617|  17702|              7.050050e+14|
 |unsafe   |    3922|   346 |      0 |   344 |             1.654209e+10|
 
@@ -140,7 +140,9 @@ equilibrium = merged_transition_count[["bite","safe","unsafe","wipe"]].div(merge
 ### output:
 `Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from state')
 -----------------------------------------------
-                     bite          safe        unsafe          wipe
-simple_from                                                        
-safe         0.000000e+00  0.000000e+00  6.548890e-12  2.510904e-11
-unsafe       2.370922e-07  2.091634e-08  0.000000e+00  2.079544e-08`
+-----------------------------------------------
+| simple_to   | bite | safe | unsafe | wipe | total_draw_seconds_spent |
+| ----------- |:----:|:----:|:------:| ----:|
+| simple_from |||||
+|safe   |      0.000000e+00|  0.000000e+00 | 6.548890e-12 | 2.510904e-11|
+|unsafe|       2.370922e-07 | 2.091634e-08 | 0.000000e+00 | 2.079544e-08`|
