@@ -88,7 +88,7 @@ Time Spent
 | simple_to   | bite | open | safe | unsafe | wipe |
 | ----------- |:----:|:----:|:----:|:------:| ----:|
 | simple_from |         |               |         |              |              |
-|safe         |NaN      |   1.790264e+10|   NaN   |  1.955786e+10|  3.472525e+10|
+|safe         |NaN      |   1.812683e+10|   NaN   |  1.955786e+10|  3.472525e+10|
 |unsafe       |4120329.0|NaN            |1058672.0|NaN           |  4.609800e+04|
 
 ## Step 4
@@ -102,7 +102,7 @@ Draw Seconds (Number of Draws x Time Spent)
 | simple_to   | bite | open | safe | unsafe | wipe |
 | ----------- |:----:|:----:|:----:|:------:| ----:|
 | simple_from |      |      |      |        |      |               
-|safe         | NaN | 7.669491e+13  | NaN  | 9.029862e+13 | 6.147064e+14|
+|safe         | NaN | 7.765534e+13  | NaN  | 9.029862e+13 | 6.147064e+14|
 |unsafe       |1.615993e+10| NaN  | 366300512.0 | NaN | 1.585771e+07|
 
 ## Step 5
@@ -115,7 +115,7 @@ Total Draw Seconds in 'from' state
 -----------------------------------------------
 |simple_from | draw-time |
 | -- | -- |
-|safe|7.816999e+14|
+|safe|7.826603e+14|
 |unsafe|1.654209e+10|
 
 ## Step 6
@@ -129,7 +129,7 @@ Concatenated Matrix
 | simple_to   | bite | open | safe | unsafe | wipe | total_draw_seconds_spent |
 | ----------- |:----:|:----:|:----:|:------:|:------:| ----:|
 | simple_from |      |      |      |        |        |      |                                                     
-|safe    |        0|     4284|     0|    4617|  17702|              7.816999e+14|
+|safe    |        0|     4284|     0|    4617|  17702|             7.826603e+14|
 |unsafe   |    3922|     0|   346 |      0 |   344 |             1.654209e+10|
 
 ## Step 7 (not really a step)
@@ -150,5 +150,5 @@ Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from' 
 | simple_to   | bite | safe | unsafe | wipe |
 | ----------- |:----:|:----:|:------:| ----:|
 | simple_from |      |      |        |      |
-|safe   |      0.000000e+00|  0.000000e+00 | 5.906359e-12 | 2.264552e-11|
+|safe   |      0.000000e+00|  0.000000e+00 | 5.899111e-12 | 2.261773e-11|
 |unsafe|       2.370922e-07 |2.091634e-08 | 0.000000e+00 | 2.079544e-08|
