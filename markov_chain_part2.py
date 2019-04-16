@@ -34,7 +34,7 @@ print()
 #produces a 4th matrix
 #this condenses the above 3rd matrix, collapsing all of the broken out sections, into just draw-seconds spent in 'safe' vs. 'unsafe'
 total_draw_seconds_spent = draw_seconds.sum(axis=1)
-print("Total Draw Seconds in 'from state'")
+print("Total Draw Seconds in 'from' state")
 print("-----------------------------------------------")
 print(total_draw_seconds_spent)
 print()
@@ -52,6 +52,7 @@ print()
 
 #this produces the 6th and final matrix
 #this performans a division operation, dividing the number of transitions for each 'from-to' pair of states by the total draw-seconds spent in the 'from' state
+#note, this operation excludes the open column
 equilibrium = merged_transition_count[["bite","safe","unsafe","wipe"]].div(merged_transition_count["total_draw_seconds_spent"],axis=0)
 print("Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from state')")
 print("-----------------------------------------------")
