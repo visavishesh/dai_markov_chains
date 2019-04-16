@@ -117,7 +117,7 @@ total_draw_seconds_spent = draw_seconds.sum(axis=1)
 merged_transition_count = pd.concat([transition_count,total_draw_seconds_spent],axis=1)
 
 ### output:
-`Concatenated Matrix
+Concatenated Matrix
 -----------------------------------------------
 | simple_to   | bite | safe | unsafe | wipe | total_draw_seconds_spent |
 | ----------- |:----:|:----:|:------:|:------:| ----:|
@@ -138,11 +138,10 @@ merged_transition_count.columns = ["bite","safe","unsafe","wipe","total_draw_sec
 equilibrium = merged_transition_count[["bite","safe","unsafe","wipe"]].div(merged_transition_count["total_draw_seconds_spent"],axis=0)
 
 ### output:
-`Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from state')
+Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from state')
 -----------------------------------------------
------------------------------------------------
-| simple_to   | bite | safe | unsafe | wipe | total_draw_seconds_spent |
+| simple_to   | bite | safe | unsafe | wipe |
 | ----------- |:----:|:----:|:------:| ----:|
-| simple_from |||||
+| simple_from |      |      |        |      |
 |safe   |      0.000000e+00|  0.000000e+00 | 6.548890e-12 | 2.510904e-11|
 |unsafe|       2.370922e-07 | 2.091634e-08 | 0.000000e+00 | 2.079544e-08`|
