@@ -1,6 +1,6 @@
-Analysis of DAI collateralized debt position (CDP) transitions
+# Analysis of DAI collateralized debt position (CDP) transitions
 
-Setup
+## Setup
 
 Clone this repo:
 
