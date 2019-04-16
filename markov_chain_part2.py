@@ -43,7 +43,7 @@ print()
 #this concatenates the 1st matrix of transition counts with the 4th matrix of draw-time spent in 'safe' vs. 'unsafe' 
 #effectively, this simply adds a column to the 1st matrix for the total draw-seconds spent in each row (ie 'safe' and 'unsafe')
 merged_transition_count = pd.concat([transition_count,total_draw_seconds_spent],axis=1)
-merged_transition_count.columns = ["simple_to","bite","safe","unsafe","wipe","total_draw_seconds_spent"]
+merged_transition_count.columns = ["bite","safe","unsafe","wipe","total_draw_seconds_spent"]
 print("Concatenated Matrix")
 print("-----------------------------------------------")
 print(merged_transition_count)
