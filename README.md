@@ -39,30 +39,30 @@ If you receive an error because you do not have pandas or numpy installed, run t
 ## The magic:
     `markov_chains_part2.py` uses `pandas` and `numpy`. It first reads and parses the intermediate output file, then cross-tabulates the count of transitions in each from-to state pair. It then sums the time spent in each 'from' state (ie 'safe' and 'unsafe'). Then it divides the # of transitions for each state pair by the total time spent in the 'from' state to produce the final output.
 
-#The Code
+# The Code
 
-##Reads the File
+## Reads the File
 df = pd.read_csv("intermediate_markov_output.csv")
 df.head()
 df["simple_transition"] = df["simple_from"]+"_to_"+df["simple_to"]
 
-##Produces a matrix of the number of transitions between each 'from' and 'to' state
+## Produces a matrix of the number of transitions between each 'from' and 'to' state
 transition_count = pd.crosstab(index=df.simple_from, columns=df.simple_to)
 
-##Produces a matrix of the time spent in each state (still broken out by the transition 'from')
+## Produces a matrix of the time spent in each state (still broken out by the transition 'from')
 time_spent = pd.crosstab(values=df.time_spent,aggfunc=np.sum,index=df.simple_from, columns=df.simple_to)
 
-##Multiplies the first two matrices, to get draw-seconds spent in each state (still broken out by the transition 'from')
+## Multiplies the first two matrices, to get draw-seconds spent in each state (still broken out by the transition 'from')
 draw_seconds = transition_count * time_spent
 
-##Collapses the break out for transition 'from', to just draw-seconds in 'safe' vs. 'unsafe'
+## Collapses the break out for transition 'from', to just draw-seconds in 'safe' vs. 'unsafe'
 total_draw_seconds_spent = draw_seconds.sum(axis=1)
 
-##Adds a time-spent in 'from' state column to the 1st transition count matrix
+## Adds a time-spent in 'from' state column to the 1st transition count matrix
 merged_transition_count = pd.concat([transition_count,total_draw_seconds_spent],axis=1)
 
-##Beautification (renaming columns)
+## Beautification (renaming columns)
 merged_transition_count.columns = ["bite","safe","unsafe","wipe","total_draw_seconds_spent"]
 
-##Simple division of transition count for each state pair by total draw-seconds spent in 'from' state ('safe' vs 'unsafe') across all draws
+## Simple division of transition count for each state pair by total draw-seconds spent in 'from' state ('safe' vs 'unsafe') across all draws
 equilibrium = merged_transition_count[["bite","safe","unsafe","wipe"]].div(merged_transition_count["total_draw_seconds_spent"],axis=0)
