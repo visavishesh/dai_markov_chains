@@ -104,7 +104,7 @@ Draw Seconds (Number of Draws x Time Spent)
 total_draw_seconds_spent = draw_seconds.sum(axis=1)
 
 ### output:
-`Total Draw Seconds in 'from state'
+Total Draw Seconds in 'from state'
 -----------------------------------------------
 |simple_from | draw-time |
 | -- | -- |
