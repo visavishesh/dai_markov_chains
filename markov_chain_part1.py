@@ -3,7 +3,7 @@ import json
 
 output = []
 
-last_time = 1549495867
+last_time = 1549548199
 
 with open("debt_lives_processed.csv","r") as csvfile:
 	reader = csv.DictReader(csvfile)		
@@ -24,7 +24,6 @@ with open("debt_lives_processed.csv","r") as csvfile:
 
 		if row["transition0"]=='' and row["safe"]=='TRUE': 
 			transition_array+=[(0, 'open', 1549495867, 'safe')]
-			print(transition_array)
 
 		for i in range(1,len(transition_array)):
 			transition_name = transition_array[i-1][1]+"->"+transition_array[i][1]
