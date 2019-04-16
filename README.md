@@ -89,7 +89,7 @@ Time Spent
 ### Multiplies the first two matrices, to get draw-seconds spent in each state (still broken-out by 'from'/'to')
 draw_seconds = transition_count * time_spent
 
-###output: 
+### output: 
 Draw Seconds (Number of Draws x Time Spent)
 -----------------------------------------------
 | simple_to   | bite | safe | unsafe | wipe |
