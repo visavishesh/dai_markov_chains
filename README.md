@@ -111,7 +111,7 @@ Draw Seconds (Number of Draws x Time Spent)
 total_draw_seconds_spent = draw_seconds.sum(axis=1)
 
 ### output:
-Total Draw Seconds in 'from state'
+Total Draw Seconds in 'from' state
 -----------------------------------------------
 |simple_from | draw-time |
 | -- | -- |
@@ -145,7 +145,7 @@ merged_transition_count.columns = ["bite","open","safe","unsafe","wipe","total_d
 equilibrium = merged_transition_count[["bite","safe","unsafe","wipe"]].div(merged_transition_count["total_draw_seconds_spent"],axis=0)
 
 ### output:
-Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from state', excluding 'open')
+Equilibrium Probabilities (Number of Transitions / Total Draw Seconds in 'from' state, excluding 'open')
 -----------------------------------------------
 | simple_to   | bite | safe | unsafe | wipe |
 | ----------- |:----:|:----:|:------:| ----:|
