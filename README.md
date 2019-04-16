@@ -4,7 +4,7 @@
 
 Clone this repo:
 
-    `git clone git@github.com:vic007207/dai_markov_chains.git`
+    `git clone https://github.com/vic007207/dai_markov_chains.git`
 
 cd into the directory:
 
