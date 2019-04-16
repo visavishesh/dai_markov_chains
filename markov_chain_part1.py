@@ -22,8 +22,9 @@ with open("debt_lives_processed.csv","r") as csvfile:
 			if transition_time!='': 
 				transition_array+=[(int(transitions[i].replace("transition","")),transition,int(transition_time))]
 
-		if row["transition0"]=='' and row["safe"]=='TRUE': 
-			transition_array+=[(0, 'open', 1549548199, 'safe')]
+		transition_array = [t for t in transition_array if t[0]!='']
+		last_transition = transition_array[len(transition_array)-1]
+		if last_transition[1] not in["bite","wipe","shut"]: transition_array+=[(len(transition_array), 'open', 1549548199, 'safe')]
 
 		for i in range(1,len(transition_array)):
 			transition_name = transition_array[i-1][1]+"->"+transition_array[i][1]
@@ -35,6 +36,8 @@ with open("debt_lives_processed.csv","r") as csvfile:
 			elif transition_name=="born->shut": simple_transition=("safe","wipe")
 			elif transition_name=="born->bite": simple_transition=("safe","bite")
 			elif transition_name=="born->open": simple_transition=("safe","open")
+			elif transition_name=="TRUE->open": simple_transition=("safe","open")
+			elif transition_name=="FALSE->open": simple_transition=("unsafe","open")
 			elif transition_name=="born->FALSE": simple_transition=("safe","unsafe")
 			elif transition_name=="TRUE->FALSE": simple_transition=("safe","unsafe")
 			elif transition_name=="TRUE->bite": simple_transition=("safe","bite")

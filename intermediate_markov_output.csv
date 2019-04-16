@@ -234,7 +234,9 @@ cdp,initial_size,transition,time_spent,simple_from,simple_to
 5308,500.0,born->open,205615,safe,open
 14242,800.0,born->open,209566,safe,open
 14300,0.12,born->FALSE,3068,safe,unsafe
+14300,0.12,FALSE->open,206695,unsafe,open
 14300,2.0,born->FALSE,3207,safe,unsafe
+14300,2.0,FALSE->open,206695,unsafe,open
 5653,390.0,born->open,211347,safe,open
 5760,400.0,born->wipe,31985,safe,wipe
 1600,77.0,born->open,215968,safe,open
@@ -299,6 +301,7 @@ cdp,initial_size,transition,time_spent,simple_from,simple_to
 5860,10.0,born->wipe,158882,safe,wipe
 829,700.0,born->open,265418,safe,open
 14279,0.565,born->FALSE,60452,safe,unsafe
+14279,0.565,FALSE->open,206695,unsafe,open
 14278,1.0,born->open,268217,safe,open
 5601,400.0,born->open,269421,safe,open
 5227,230.0,born->wipe,148366,safe,wipe
@@ -493,6 +496,7 @@ cdp,initial_size,transition,time_spent,simple_from,simple_to
 12944,0.17,TRUE->FALSE,4494,safe,unsafe
 12944,0.17,FALSE->TRUE,39959,unsafe,safe
 12944,0.17,TRUE->FALSE,34655,safe,unsafe
+12944,0.17,FALSE->open,0,unsafe,open
 5308,100.0,born->open,413803,safe,open
 14050,50.0,born->open,414036,safe,open
 14205,90000.0,born->open,414121,safe,open
@@ -675,6 +679,7 @@ cdp,initial_size,transition,time_spent,simple_from,simple_to
 14178,0.7,born->FALSE,14001,safe,unsafe
 14178,0.7,FALSE->TRUE,35282,unsafe,safe
 14178,0.7,TRUE->FALSE,395863,safe,unsafe
+14178,0.7,FALSE->open,132387,unsafe,open
 14176,2000.0,born->open,578212,safe,open
 2038,9000.0,born->open,578790,safe,open
 14177,500.0,born->open,578792,safe,open
@@ -4137,6 +4142,7 @@ cdp,initial_size,transition,time_spent,simple_from,simple_to
 5760,320.0,born->wipe,343565,safe,wipe
 12879,3.0,born->FALSE,1891717,safe,unsafe
 12879,3.0,FALSE->TRUE,53060,unsafe,safe
+12879,3.0,TRUE->open,79108,safe,open
 5938,200.0,born->wipe,67313,safe,wipe
 5062,50.0,born->wipe,4932,safe,wipe
 12878,1.9,born->wipe,79469,safe,wipe
@@ -15617,6 +15623,7 @@ cdp,initial_size,transition,time_spent,simple_from,simple_to
 3098,10.0,FALSE->TRUE,231,unsafe,safe
 3098,10.0,TRUE->FALSE,41313,safe,unsafe
 3098,10.0,FALSE->TRUE,182,unsafe,safe
+3098,10.0,TRUE->open,6802481,safe,open
 2222,500.0,born->wipe,1972065,safe,wipe
 3577,200.0,born->FALSE,4666819,safe,unsafe
 3577,200.0,FALSE->bite,802,unsafe,bite
@@ -17395,6 +17402,7 @@ cdp,initial_size,transition,time_spent,simple_from,simple_to
 3098,40.0,FALSE->TRUE,231,unsafe,safe
 3098,40.0,TRUE->FALSE,41313,safe,unsafe
 3098,40.0,FALSE->TRUE,182,unsafe,safe
+3098,40.0,TRUE->open,6802481,safe,open
 601,15000.0,born->wipe,141571,safe,wipe
 224,20000.0,born->wipe,6750645,safe,wipe
 1938,450.0,born->FALSE,6728442,safe,unsafe
